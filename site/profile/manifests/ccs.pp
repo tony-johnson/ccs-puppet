@@ -23,8 +23,29 @@ class profile::ccs {
       content => epp('profile/udp_ccs.properties.epp'),       
    }   
 
+   file { '/usr/local/bin/ccssetup' :
+      ensure => file,
+      mode => '755',
+      content => epp('profile/ccssetup.epp'),       
+   }       
+
+   file { "/etc/profile.d/setup_ccssetup.sh":
+      ensure => present,
+      content => "eval `/usr/local/bin/ccssetup -s bash`\nccssetup\n",
+   }
+
+   file { "/etc/profile.d/setup_ccssetup.csh":
+      ensure => present,
+      content => "eval `/usr/local/bin/ccssetup -s csh`\nccssetup\n",
+   }
+
    user { 'ccs':
       ensure => present,
       managehome => true,
    } 
+
+   service { 'firewalld':
+      enable => false, 
+      ensure => stopped,
+   }
 }
