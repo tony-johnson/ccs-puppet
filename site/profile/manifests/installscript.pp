@@ -5,6 +5,15 @@ class profile::installscript {
       ensure => present,
    }
 
+
+   package { 'wget':
+      ensure => present,
+   }
+
+   package { 'zip':
+      ensure => present,
+   }
+
    vcsrepo { '/lsst/ccsadmin/release':
      ensure   => present,
      provider => git,
