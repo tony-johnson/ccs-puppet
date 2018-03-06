@@ -10,7 +10,7 @@ class profile::installscript {
       ensure => present,
    }
 
-   package { 'zip':
+   package { 'unzip':
       ensure => present,
    }
 
