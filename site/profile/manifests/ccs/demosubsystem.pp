@@ -1,6 +1,8 @@
-class profile::demosubsystem {
+class profile::ccs::demosubsystem {
 
-   include profile::installscript
+   include profile::ccs::ccs
+   include profile::ccs::installscript
+   include profile::ccs::java
 
    file { '/lsst/ccsadmin/package-lists/ccsApplications.txt' :
      ensure => file, 
@@ -16,7 +18,7 @@ class profile::demosubsystem {
      owner   => 'root',
      group   => 'root',
      content => epp('profile/service.epp', { 'serviceName' => 'DemoSubsystemService', 'serviceCommand' => '/lsst/ccs/prod/bin/RunDemoSubsystem'}),
-   }~>
+   }
    
    exec { 'demoSubsystemService-systemd-reload':
      command     => 'systemctl daemon-reload',

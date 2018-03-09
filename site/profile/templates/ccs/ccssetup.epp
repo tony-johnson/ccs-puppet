@@ -12,7 +12,7 @@ If no version is specified the prod version will be set up.
 
 ccsetup -l
 
-List avaialable versions
+List available versions
 
 ccssetup -h
 

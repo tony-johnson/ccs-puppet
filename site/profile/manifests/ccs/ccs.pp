@@ -1,4 +1,4 @@
-class profile::ccs {
+class profile::ccs::ccs {
    file { '/var/log/ccs' : 
       ensure => directory,
       mode => '1764',
@@ -44,6 +44,7 @@ class profile::ccs {
       managehome => true,
    } 
 
+   # Replace me with something better.
    service { 'firewalld':
       enable => false, 
       ensure => stopped,

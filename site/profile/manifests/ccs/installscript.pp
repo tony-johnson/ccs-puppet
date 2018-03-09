@@ -1,10 +1,12 @@
-class profile::installscript {
-   include profile::ccs
+# Installs the CCS install script (install.py)
+# Possible this should be replaced with a puppet module
+# which replicates the same functionality.
+class profile::ccs::installscript {
+   include profile::ccs::ccs
 
    package { 'git':
       ensure => present,
    }
-
 
    package { 'wget':
       ensure => present,
