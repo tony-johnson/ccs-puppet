@@ -13,20 +13,20 @@ class profile::ccs::subsystem (String $subsystemName, String $version, String $c
      command => '/lsst/ccsadmin/release/bin/install.py --ccs_inst_dir /lsst/ccs/prod /lsst/ccsadmin/package-lists/ccsApplications.txt',
    }
 
-   file { '/lib/systemd/system/${service}.service':
+   file { "lib/systemd/system/${service}.service":
      mode    => '0644',
      owner   => 'root',
      group   => 'root',
      content => epp('profile/ccs/service.epp', { 'serviceName' => 'DemoSubsystemService', 'serviceCommand' => '/lsst/ccs/prod/bin/${command}'}),
    }
 
-   exec { '${service}-systemd-reload':
+   exec { 'systemd-reload':
      command     => 'systemctl daemon-reload',
      path        => [ '/usr/bin', '/bin', '/usr/sbin' ],
      refreshonly => true,
    }
 
-   service { '${service}':
+   service { "${service}":
      ensure => running,
      enable => true,
    }
