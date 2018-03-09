@@ -17,6 +17,6 @@ class profile::ccs::java {
 
     # Not strictly required by java, but graphical components will not run without it
     yum::group { 'X Window System':
-       ensure  => present,
+       ensure  => present
     }
 }
