@@ -13,7 +13,7 @@ class profile::ccs::subsystem (String $subsystemName, String $version, String $c
      command => '/lsst/ccsadmin/release/bin/install.py --ccs_inst_dir /lsst/ccs/prod /lsst/ccsadmin/package-lists/ccsApplications.txt',
    }
 
-   file { "lib/systemd/system/${service}.service":
+   file { "/lib/systemd/system/${service}.service":
      mode    => '0644',
      owner   => 'root',
      group   => 'root',
