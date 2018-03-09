@@ -15,4 +15,8 @@ class profile::ccs::java {
       unless  => "test /etc/alternatives/java -ef '/usr/java/jdk1.8.0_161/jre/bin/java'",
     }
 
+    # Not strictly required by java, but graphical components will not run without it
+    yum::group { 'X Window System':
+       ensure  => present,
+    }
 }
