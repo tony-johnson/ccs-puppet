@@ -17,7 +17,7 @@ class profile::ccs::demosubsystem {
      mode    => '0644',
      owner   => 'root',
      group   => 'root',
-     content => epp('profile/service.epp', { 'serviceName' => 'DemoSubsystemService', 'serviceCommand' => '/lsst/ccs/prod/bin/RunDemoSubsystem'}),
+     content => epp('profile/ccs/service.epp', { 'serviceName' => 'DemoSubsystemService', 'serviceCommand' => '/lsst/ccs/prod/bin/RunDemoSubsystem'}),
    }
    
    exec { 'demoSubsystemService-systemd-reload':

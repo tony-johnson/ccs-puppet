@@ -14,19 +14,19 @@ class profile::ccs::ccs {
    file { '/etc/ccs/ccsGlobal.properties' :
       ensure => file,
       mode => '1764',
-      content => epp('profile/ccsGlobal.properties.epp'),       
+      content => epp('profile/ccs/ccsGlobal.properties.epp'),
    }   
 
    file { '/etc/ccs/udp_ccs.properties' :
       ensure => file,
       mode => '1764',
-      content => epp('profile/udp_ccs.properties.epp'),       
+      content => epp('profile/ccs/udp_ccs.properties.epp'),
    }   
 
    file { '/usr/local/bin/ccssetup' :
       ensure => file,
       mode => '755',
-      content => epp('profile/ccssetup.epp'),       
+      content => epp('profile/ccs/ccssetup.epp'),
    }       
 
    file { "/etc/profile.d/setup_ccssetup.sh":
