@@ -1,7 +1,7 @@
 #
 # Installs a single CCS dist file, and creates shortcuts
 #
-class profile::ccs::dist (String $distfile, String $version, $commands = []] {
+class profile::ccs::dist (String $distfile, String $version, $commands = []]) {
 
    include profile::ccs::ccs
    include profile::ccs::installscript
