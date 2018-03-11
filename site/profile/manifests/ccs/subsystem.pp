@@ -1,5 +1,7 @@
 class profile::ccs::subsystem (String $subsystemName, String $version, String $command, String $service) {
 
+   include profile::ccs::dist
+
    profile::ccs::dist("org-lsst-ccs-subsystem-${subsystemName}-main", $version, [$command])
    profile::ccs::dist("org-lsst-ccs-subsystem-${subsystemName}-gui", $version, ["CCS-Console", "ShellCommandConsole"])
 
