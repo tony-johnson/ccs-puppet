@@ -2,8 +2,17 @@ class profile::ccs::subsystem (String $subsystemName, String $version, String $c
 
    include profile::ccs::dist
 
-   profile::ccs::dist("org-lsst-ccs-subsystem-${subsystemName}-main", $version, [$command])
-   profile::ccs::dist("org-lsst-ccs-subsystem-${subsystemName}-gui", $version, ["CCS-Console", "ShellCommandConsole"])
+   class {' profile::ccs::dist':
+      distfile => "org-lsst-ccs-subsystem-${subsystemName}-main",
+      version => $version,
+      commands => [$command],
+   }
+
+   class {' profile::ccs::dist':
+      distfile => "org-lsst-ccs-subsystem-${subsystemName}-gui",
+      version => $version,
+      commands => ["CCS-Console", "ShellCommandConsole"],
+   }
 
    file { "/lib/systemd/system/${service}.service":
      mode    => '0644',
