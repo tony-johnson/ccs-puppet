@@ -10,7 +10,8 @@ class profile::ccs::dist (String $distfile, String $version, $commands = []) {
    file { "/lsst/ccsadmin/package-lists/${distfile}.txt":
      ensure => file,
      content => "[ccs]\n${distfile} = ${version}"
-   }->
+   }
+   
    $commands.each |String $command| {
      file-line { "append":
         path => "/lsst/ccsadmin/package-lists/${distfile}.txt",
