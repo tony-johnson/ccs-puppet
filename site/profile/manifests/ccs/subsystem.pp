@@ -1,7 +1,5 @@
 class profile::ccs::subsystem (String $subsystemName, String $version, String $command, String $service) {
 
-   include profile::ccs::dist
-
    class {' profile::ccs::dist':
       distfile => "org-lsst-ccs-subsystem-${subsystemName}-main",
       version => $version,
