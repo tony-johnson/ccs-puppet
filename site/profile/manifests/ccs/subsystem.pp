@@ -1,7 +1,7 @@
 class profile::ccs::subsystem (String $subsystemName, String $version, String $command, String $service) {
 
    profile::ccs::dist("org-lsst-ccs-subsystem-${subsystemName}-main", $version, [$command])
-   profile::ccs::dist("org-lsst-ccs-subsystem-${subsystemName}-gui", $version, ["CCS-Console", "ShellCommandConsole")
+   profile::ccs::dist("org-lsst-ccs-subsystem-${subsystemName}-gui", $version, ["CCS-Console", "ShellCommandConsole"])
 
    file { "/lib/systemd/system/${service}.service":
      mode    => '0644',
