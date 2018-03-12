@@ -13,7 +13,7 @@ define profile::ccs::dist (String $distfile, String $version, Array[String] $com
    }
    
    $commands.each |String $command| {
-     file_line { "append":
+     file_line { "append_${command}":
         path => "/lsst/ccsadmin/package-lists/${distfile}.txt",
         line => "executable.${command} = ${distfile}",
      }
