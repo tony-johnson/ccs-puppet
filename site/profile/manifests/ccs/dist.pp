@@ -19,7 +19,7 @@ define profile::ccs::dist (String $distfile, String $version, Array[String] $com
      }
    }
 
-   exec { 'doit':
+   exec { "doit_${distfile}":
      command => "/lsst/ccsadmin/release/bin/install.py --ccs_inst_dir /lsst/ccs/prod /lsst/ccsadmin/package-lists/${distfile}.txt",
    }
 
