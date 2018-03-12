@@ -1,12 +1,12 @@
 class profile::ccs::subsystem (String $subsystemName, String $version, String $command, String $service) {
 
-   class {'profile::ccs::dist':
+   profile::ccs::dist { 'main':
       distfile => "org-lsst-ccs-subsystem-${subsystemName}-main",
       version => $version,
       commands => [$command],
    }
 
-   class {'profile::ccs::dist':
+   profile::ccs::dist { 'gui':
       distfile => "org-lsst-ccs-subsystem-${subsystemName}-gui",
       version => $version,
       commands => ["CCS-Console", "ShellCommandConsole"],
